@@ -1,16 +1,14 @@
-Ext.define('KaspiMobile.view.main.LoginController', {
+Ext.define('KaspiMobile.view.main.ClientController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.login',
+    alias: 'controller.client',
 
 
-
-    onLoginClick: function() {
+     onSyncClick: function() {
         console.log('ENTERED !!!!!');
         // This would be the ideal location to verify the user's credentials via
         // a server-side lookup. We'll just move forward for the sake of this example.
 
         // Set the localStorage value to true
-        localStorage.setItem("TutorialLoggedIn", true);
 
         // Remove Login Window
         this.getView().destroy();
@@ -18,9 +16,10 @@ Ext.define('KaspiMobile.view.main.LoginController', {
 
         // Add the main view to the viewport
         Ext.Viewport.setActiveItem({
-            xtype : 'pinCodePage'
+            xtype : 'MeetingsPage'
         });
 
         console.log('FINISHED !!!!!');
     }
+
 });

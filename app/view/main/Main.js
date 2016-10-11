@@ -1,10 +1,3 @@
-/**
- * This class is the main view for the application. It is specified in app.js as the
- * "mainView" property. That setting causes an instance of this class to be created and
- * added to the Viewport container.
- *
- * TODO - Replace the content of this view to suit the needs of your application.
- */
 Ext.define('KaspiMobile.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
@@ -14,7 +7,7 @@ Ext.define('KaspiMobile.view.main.Main', {
 
         'KaspiMobile.view.main.MainController',
         'KaspiMobile.view.main.MainModel',
-        'KaspiMobile.view.main.List'
+        'KaspiMobile.view.main.PinCode'
     ],
 
     controller: 'main',
@@ -34,9 +27,8 @@ Ext.define('KaspiMobile.view.main.Main', {
             title: 'Home',
             iconCls: 'x-fa fa-home',
             layout: 'fit',
-            // The following grid shares a store with the classic version's grid as well!
             items: [{
-                xtype: 'mainlist2'
+                xtype: 'pinCodePage'
             }]
         },{
             title: 'Users',

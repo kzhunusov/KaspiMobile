@@ -9,7 +9,13 @@ Ext.application({
     extend: 'KaspiMobile.Application',
 
     requires: [
-        'KaspiMobile.view.main.Login'
+        'KaspiMobile.view.main.Login',
+        'KaspiMobile.view.main.PinCode',
+        'KaspiMobile.view.main.Sync',
+        'KaspiMobile.view.main.TitleBar',
+        'KaspiMobile.view.main.Meetings',
+        'KaspiMobile.view.main.MeetingsList',
+        'KaspiMobile.view.main.Client'
     ],
 
     // The name of the initial view to create. With the classic toolkit this class

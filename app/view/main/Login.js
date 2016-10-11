@@ -3,29 +3,8 @@
  */
 Ext.define('KaspiMobile.view.main.Login', {
     extend: 'Ext.form.Panel',
-    xtype: 'mainlist',
-
-//     requires: [
-//         'KaspiMobile.store.Personnel'
-//     ],
-//
+    xtype: 'login',
     title: 'Hard Collection Mobile',
-//
-//     store: {
-//         type: 'personnel'
-//     },
-//
-//     columns: [
-//         { text: 'Name',  dataIndex: 'name', width: 100 },
-//         { text: 'Email', dataIndex: 'email', width: 230 },
-//         { text: 'Phone', dataIndex: 'phone', width: 150 }
-//     ],
-//
-//     listeners: {
-//         select: 'onItemSelected'
-//     }
-// });
-
     requires: [
         'Ext.form.FieldSet',
         'Ext.field.Number',
@@ -38,7 +17,6 @@ Ext.define('KaspiMobile.view.main.Login', {
         'Ext.field.Hidden',
         'Ext.field.Radio',
         'KaspiMobile.view.main.LoginController',
-        'KaspiMobile.view.main.Main',
         'Ext.tab.Panel',
         'Ext.form.Panel'
     ],
@@ -47,14 +25,15 @@ Ext.define('KaspiMobile.view.main.Login', {
     items: [
         {
             xtype : 'image',
+            id: 'loginImg',
             style: {
                 'display': 'inline-block',
                 'margin' : '0 auto'
 
             },
-            src : 'resources/user.png',
+            src : 'resources/login.svg',
             mode : 'image',
-            width: '100'
+            width: '50'
         },
         {
             xtype: 'fieldset',
@@ -62,14 +41,13 @@ Ext.define('KaspiMobile.view.main.Login', {
             style: 'margin: 1em',
             defaults: {
                 labelWidth: '35%',
-                width: '400'
+                width: '80%'
             },
             layout: {
                 type: 'vbox',
                 align: 'center'
             },
             items: [
-
                 {
                     xtype: 'textfield',
                     name: 'login',
@@ -92,7 +70,7 @@ Ext.define('KaspiMobile.view.main.Login', {
             defaults: {
                 xtype: 'button',
                 style: 'margin: 1em',
-                flex: 1,
+                flex: 1
             },
             layout: {
                 type: 'hbox',
@@ -101,40 +79,18 @@ Ext.define('KaspiMobile.view.main.Login', {
             items: [
                 {
                     text: 'Вход',
+                    id: 'btnLogin',
                     ui: 'action',
-                    scope: this,
-                    maxWidth: '200',
+                    maxWidth: '100',
                     hasDisabled: false,
-                    handler: function(btn){
-
-                        Ext.getCmp('basicform').destroy();
-                        Ext.getCmp('basicform').add( Ext.create('app-main'));
-                        // Add the main view to the viewport
-
-                        console.log('Login controller');
-                        // var fieldset1 = Ext.getCmp('fieldset1');
-                        //
-                        // if (btn.hasDisabled) {
-                        //     fieldset1.enable();
-                        //     btn.hasDisabled = false;
-                        // } else {
-                        //     fieldset1.disable();
-                        //     btn.hasDisabled = true;
-                        // }
-
-
-
-
-                    }
+                    handler: 'onLoginClick'
 
                 },
                 {
                     text: 'Отмена',
-                    maxWidth: '200',
-                    ui: 'action',
-                    handler: function(){
-                        Ext.getCmp('basicform').reset();
-                    }
+                    maxWidth: '100',
+                    ui: 'action'
+
                 }
             ]
         }

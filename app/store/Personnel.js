@@ -4,14 +4,12 @@ Ext.define('KaspiMobile.store.Personnel', {
     alias: 'store.personnel',
 
     fields: [
-        'firstName', 'lastName', 'phone'
+        'number', 'good', 'sum', 'debt'
     ],
 
     data: { items: [
-        { firstName: 'Jean Luc', lastName: "jeanluc.picard@enterprise.com", phone: "555-111-1111" },
-        { firstName: 'Worf',     lastName: "worf.moghsson@enterprise.com",  phone: "555-222-2222" },
-        { firstName: 'Deanna',   lastName: "deanna.troi@enterprise.com",    phone: "555-333-3333" },
-        { firstName: 'Data',     lastName: "mr.data@enterprise.com",        phone: "555-444-4444" }
+        { number: 'R12312313-CRD2', good: "Утюг", sum: "1000000" ,debt: "2000" },
+        { number: 'R12312313-CRD3', good: "Телефон", sum: "21313" ,debt: "223" }
     ]},
 
     proxy: {

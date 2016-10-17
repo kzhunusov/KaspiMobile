@@ -15,7 +15,16 @@ Ext.application({
         'KaspiMobile.view.main.TitleBar',
         'KaspiMobile.view.main.Meetings',
         'KaspiMobile.view.main.MeetingsList',
-        'KaspiMobile.view.main.Client'
+        'KaspiMobile.view.main.Client',
+        'KaspiMobile.view.main.ClientInfo',
+        'KaspiMobile.view.main.TranchesGrid',
+        'KaspiMobile.view.main.DocsGrid',
+        'KaspiMobile.view.main.BillMovementsGrid',
+        'KaspiMobile.view.main.PayIndividualForm'
+
+
+
+
     ],
 
     // The name of the initial view to create. With the classic toolkit this class

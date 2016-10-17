@@ -504,5 +504,30 @@
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
+    "builds": {
+        "cordova-native": {
+            "packager": "cordova",
+            "cordova": {
+                "config": {
+                    "platforms": "android", // Для cordova указывать целевые платформы через пробел
+                    "id": "com.test.test"
+                }
+            }
+        },
+        "phonegap-native": {
+            "packager": "phonegap",
+            "phonegap" : {
+                "config": {
+                    "platform": "android",
+                    "remote": true, // Сборка в облаке
+                    "id": "com.test.test"
+                }
+            }
+        },
+        "modern": {
+            "toolkit": "modern",
+            "theme": "theme-triton"
+        }
+    },
     "id": "e9733478-9650-45d3-a4e2-054d3e9e0660"
 }

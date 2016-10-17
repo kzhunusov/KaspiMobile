@@ -5,7 +5,6 @@ Ext.define('KaspiMobile.view.main.MeetingsListController', {
 
 
     onOkClick: function(record, btn, index) {
-        Ext.Msg.alert('ALERT', 'HELLO ' + record.get('firstName')+' '+record.get('lastName'), Ext.emptyFn);
         console.log('ENTERED !!!!!');
         // This would be the ideal location to verify the user's credentials via
         // a server-side lookup. We'll just move forward for the sake of this example.
@@ -19,7 +18,7 @@ Ext.define('KaspiMobile.view.main.MeetingsListController', {
         });
 
         Ext.getCmp('clientTitleBar').setTitle(record.get('firstName')+' '+record.get('lastName'));
-
+        Ext.getCmp('fio').setValue(record.get('firstName') + ' ' + record.get('lastName'));
 
         Ext.Viewport.setActiveItem(client);
 

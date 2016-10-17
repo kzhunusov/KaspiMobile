@@ -33,21 +33,27 @@ Ext.define('KaspiMobile.view.main.Client', {
         {
             title: 'Заёмщик',
             items: [{
-                // xtype: 'listMeetings'
+                xtype: 'ClientInfoPage'
             }],
             cls: 'card'
         },
         {
             title: 'Движения',
             items: [{
-                // xtype: 'listMeetings'
+
+                id: 'billMovements',
+                xtype: 'billMovementsGrid',
+                layout : 'fit',
+                height: 600,
+                width: '100%'
+
             }],
             cls: 'card'
         },
         {
             title: 'График ИГ',
             items: [{
-                // xtype: 'listMeetings'
+                 xtype: 'payIndForm'
             }],
             cls: 'card'
         }

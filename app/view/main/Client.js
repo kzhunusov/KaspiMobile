@@ -53,8 +53,15 @@ Ext.define('KaspiMobile.view.main.Client', {
         {
             title: 'График ИГ',
             items: [{
+                id:'payIndForm',
                  xtype: 'payIndForm'
-            }],
+            },{
+
+                id:'payIndGrid',
+                xtype: 'PayindividualGraph',
+                hidden: true
+            }
+            ],
             cls: 'card'
         }
 

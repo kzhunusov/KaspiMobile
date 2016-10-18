@@ -9,6 +9,13 @@ Ext.define('KaspiMobile.view.main.PayIndividualFormController', {
 
 
 
+
+        // Add the main view to the viewport
+        Ext.getCmp('payIndForm').hide();
+
+        Ext.getCmp('payIndGrid').show();
+
+
         console.log('FINISHED !!!!!');
     }
 

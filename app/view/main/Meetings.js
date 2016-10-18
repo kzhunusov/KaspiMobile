@@ -4,7 +4,8 @@ Ext.define('KaspiMobile.view.main.Meetings', {
     id: 'meetings',
     controller: 'meetings',
     requires: [
-        'KaspiMobile.view.main.MeetingsList'
+        'KaspiMobile.view.main.MeetingsList',
+        'KaspiMobile.view.main.MeetingsController'
     ],
 
     cls: 'demo-solid-background',

@@ -7,7 +7,7 @@ Ext.define('KaspiMobile.view.main.Sync', {
     id: 'sync',
     controller: 'sync',
     requires: [
-        'KaspiMobile.view.main.PinCodeController'
+        'KaspiMobile.view.main.SyncController'
     ],
     viewModel: {
         data: {

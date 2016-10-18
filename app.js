@@ -20,7 +20,11 @@ Ext.application({
         'KaspiMobile.view.main.TranchesGrid',
         'KaspiMobile.view.main.DocsGrid',
         'KaspiMobile.view.main.BillMovementsGrid',
-        'KaspiMobile.view.main.PayIndividualForm'
+        'KaspiMobile.view.main.PayIndividualForm',
+        'KaspiMobile.view.main.PayIndividualGrid',
+        'KaspiMobile.view.main.PayIndividualGraph'
+
+
 
 
 

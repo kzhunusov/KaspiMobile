@@ -37,14 +37,14 @@ Ext.define('KaspiMobile.view.main.PayIndividualGraph', {
                     text: 'Изменить',
                     id: 'btnChangePayIndForm',
                     ui: 'action',
-                    maxWidth: '100',
+                    maxWidth: '200',
                     hasDisabled: false,
                     handler: 'onChangePayIndClick'
 
                 },
                 {
                     text: 'Сохранить',
-                    maxWidth: '100',
+                    maxWidth: '200',
                     ui: 'action'
 
                 }

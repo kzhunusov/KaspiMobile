@@ -9,7 +9,6 @@ Ext.define("KaspiMobile.store.List", {
                 return record.get('firstName')[0];
             }
         },
-        autoLoad: true,
 
 
         data: [

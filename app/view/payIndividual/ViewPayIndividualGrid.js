@@ -5,11 +5,6 @@ Ext.define('KaspiMobile.view.payIndividual.ViewPayIndividualGrid', {
     extend: 'Ext.grid.Grid',
     xtype: 'payIndividualPayIndividualGrid',
 
-    requires: [
-        'KaspiMobile.store.PayIndividual',
-    ],
-
-
     store: {
         type: 'payIndividual'
     },

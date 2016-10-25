@@ -88,14 +88,14 @@ Ext.define('KaspiMobile.view.auth.ViewPinCode', {
                 xtype: 'button',
                 style: {
                     'display': 'inline-block',
-                    'margin': '1em',
+                    'margin': '10px',
                     'border-radius':'100%',
-                    'background-color':'#0094FF',
-                    'padding-top':'15px'
+                    'background-color':'#4388CC',
+                    'padding-top':'23px',
 
                 },
-                minHeight: '50',
-                maxWidth: '50',
+                minHeight: '70',
+                maxWidth: '70',
                 flex: 1
             },
             layout: {
@@ -128,14 +128,14 @@ Ext.define('KaspiMobile.view.auth.ViewPinCode', {
                 xtype: 'button',
                 style: {
                     'display': 'inline-block',
-                    'margin': '1em',
+                    'margin': '10px',
                     'border-radius':'100%',
-                    'background-color':'#0094FF',
-                    'padding-top':'15px'
+                    'background-color':'#4388CC',
+                    'padding-top':'23px',
 
                 },
-                minHeight: '50',
-                maxWidth: '50',
+                minHeight: '70',
+                maxWidth: '70',
                 flex: 1
             },
             layout: {
@@ -167,14 +167,14 @@ Ext.define('KaspiMobile.view.auth.ViewPinCode', {
                 xtype: 'button',
                 style: {
                     'display': 'inline-block',
-                    'margin': '1em',
+                    'margin': '10px',
                     'border-radius':'100%',
-                    'background-color':'#0094FF',
-                    'padding-top':'15px'
+                    'background-color':'#4388CC',
+                    'padding-top':'23px',
 
                 },
-                minHeight: '50',
-                maxWidth: '50',
+                minHeight: '70',
+                maxWidth: '70',
                 flex: 1
             },
             layout: {
@@ -206,14 +206,14 @@ Ext.define('KaspiMobile.view.auth.ViewPinCode', {
                 xtype: 'button',
                 style: {
                     'display': 'inline-block',
-                    'margin': '1em',
+                    'margin': '10px',
                     'border-radius':'100%',
-                    'background-color':'#0094FF',
-                    'padding-top':'15px'
+                    'background-color':'#4388CC',
+                    'padding-top':'23px',
 
                 },
-                minHeight: '50',
-                maxWidth: '50',
+                minHeight: '70',
+                maxWidth: '70',
                 flex: 1
             },
             layout: {
@@ -222,9 +222,10 @@ Ext.define('KaspiMobile.view.auth.ViewPinCode', {
             },
             items: [
                 {
-                    text: '<-',
                     action: 'delete',
                     ui: 'action',
+                    iconCls:'x-fa fa-caret-square-o-left',
+                    iconAlign:'center',
                 },
                 {
                     text: '0',

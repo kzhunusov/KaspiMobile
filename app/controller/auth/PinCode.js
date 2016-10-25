@@ -26,11 +26,20 @@ Ext.define('KaspiMobile.controller.auth.PinCode', {
 
 
 
+            //PinCode Error page
+            errorView       : 'authPinCodeError',
+            buttonRetype    : 'authPinCodeError button[action=repincode]',
+            buttonExit    : 'authPinCodeError button[action=exit]',
+            attemptMessage  : 'authPinCodeError label[name=attemptMessage]',
+
         },
 
         control: {
             view       : {
                 show: 'onShow',
+            },
+            errorView       : {
+                show: 'onShowErrorView',
             },
             button0: {
                 tap: 'onButton0Tap',
@@ -68,11 +77,38 @@ Ext.define('KaspiMobile.controller.auth.PinCode', {
             buttonOk: {
                 tap: 'onButtonOkTap',
             },
+            buttonRetype: {
+                tap: 'onButtonRetypeTap',
+            },
+            buttonExit: {
+                tap: 'onButtonExitTap',
+            },
 
         },
     },
 
     pinCode: '',
+    pinCodeAttemps: 3,
+
+
+
+    onShow: function () {
+        this.pinCode='';
+
+        this.getMainMessage().setDisabled(false);
+        this.getMainMessage().setHtml('Введите пин-код');
+        this.setAllCodeNotTyped();
+        this.updateOk();
+
+    },
+
+    onShowErrorView: function () {
+        this.getAttemptMessage().setHtml('Осталось попыток: '+this.pinCodeAttemps+' (fakePincode=111111)');
+
+    },
+
+
+
     checkPinCode: function () {
         var value = this.pinCode;
         var tmp = '';
@@ -164,14 +200,7 @@ Ext.define('KaspiMobile.controller.auth.PinCode', {
         this.getCode5().setSrc(graySrc);
         this.getCode6().setSrc(graySrc);
     },
-    onShow: function () {
-        this.pinCode='';
-        this.getMainMessage().setDisabled(false);
-        this.getMainMessage().setHtml('Введите пин-код');
-        this.setAllCodeNotTyped();
-        this.updateOk();
 
-    },
     onButton0Tap: function () {
         this.updatePinCode('0');
         this.updateCode();
@@ -228,7 +257,40 @@ Ext.define('KaspiMobile.controller.auth.PinCode', {
         this.updateOk();
     },
     onButtonOkTap: function () {
-        this.showView('sync.ViewSync');
+        this.getButtonOk().setDisabled(true);
+        this.getButtonDelete().setDisabled(true);
+        Ext.Ajax.request({
+            url: service("auth/pincode"),
+            params: {
+                pincode: this.pinCode,
+            },
+            scope: this,
+            success: function (response, opts) {
+                var answer = JSON.parse(response.responseText);
+                if (answer.success) {
+                    // localStorage.setItem('__last_username__', this.getFieldName().getValue());
+                    this.showView('sync.ViewSync');
+                } else {
+                    this.pinCodeAttemps=this.pinCodeAttemps-1;
+
+                    if(this.pinCodeAttemps==0){
+                        this.showView('auth.ViewLogin');
+                    }else
+                        this.showView('auth.ViewPinCodeError');
+                }
+            },
+            failure: function (response, opts) {
+                console.log('failed pincode service!!!');
+            },
+        });
+
+    },
+
+    onButtonRetypeTap: function () {
+        this.showView('auth.ViewPinCode');
+    },
+    onButtonExitTap: function () {
+        this.showView('auth.ViewLogin');
     },
 
     //
@@ -236,31 +298,5 @@ Ext.define('KaspiMobile.controller.auth.PinCode', {
     //     this.showView('auth.ViewLogin');
     // },
 
-    onButtonNextTap: function () {
-
-        this.getButtonNext().setDisabled(true);
-        this.getPhoneNumber().setDisabled(true);
-
-        this.getSendSmsMessage().show();
-        this.getErrorMessage().hide();
-
-        Ext.Ajax.request({
-            url    : service("auth/sendSmsToCheckPhone"),
-            params : {
-                phone: this.getPhone(),
-            },
-            scope  : this,
-            success: function (response, opts) {
-                interaction.phone = this.getPhone();
-                this.showView("auth.ViewCheckSms");
-            },
-            failure: function (response, opts) {
-                this.getButtonNext().setDisabled(false);
-                this.getNumber().setDisabled(false);
-                this.getErrorMessage().show();
-                this.getSendSmsMessage().hide();
-            },
-        });
-    },
 
 });

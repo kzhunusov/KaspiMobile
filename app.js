@@ -17,6 +17,7 @@ Ext.application({
 
     views: [
         'auth.ViewLogin',
+        'auth.ViewPinCodeError',
         'auth.ViewPinCode',
         'billMovements.ViewBillMovementsGrid',
         'client.ViewClient',

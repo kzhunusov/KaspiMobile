@@ -8,19 +8,19 @@ Ext.define('KaspiMobile.controller.auth.Login', {
 
             errorMessage: 'authLogin label[name=errorMessage]',
 
-            fieldName    : 'authLogin textfield[name=name]',
+            fieldName: 'authLogin textfield[name=name]',
             fieldPassword: 'authLogin passwordfield[name=password]',
 
-            loginButton       : 'authLogin button[action=login]',
-            exitButton:         'authLogin button[action=exit]',
+            loginButton: 'authLogin button[action=login]',
+            exitButton: 'authLogin button[action=exit]',
         },
 
         control: {
-            view              : {
+            view: {
                 show: 'onShow',
             },
             exitButton: {
-                tap: 'onRegistrationButtonTap'
+                tap: 'onExitButtonTap',
             },
 
             loginButton: {
@@ -46,45 +46,40 @@ Ext.define('KaspiMobile.controller.auth.Login', {
         this.getLoginButton().setDisabled(name.length == 0);
     },
 
-    onRegistrationButtonTap: function (button, event, options, eventController) {
-        this.showView('auth.ViewInputPhone');
+    onExitButtonTap: function (button, event, options, eventController) {
+        this.showView('auth.ViewLogin');
     },
 
     onLoginButtonTap: function () {
         this.getLoginButton().setDisabled(true);
+        Ext.Ajax.request({
+            url: service("auth/login"),
+            params: {
+                name: this.getFieldName().getValue(),
+                password: this.getFieldPassword().getValue(),
+            },
+            scope: this,
+            success: function (response, opts) {
+                this.getFieldPassword().setValue('');
+                var answer = JSON.parse(response.responseText);
+                if (answer.success) {
+                    localStorage.setItem('__last_username__', this.getFieldName().getValue());
+                    this.showView('auth.ViewPinCode');
+                } else {
+                    if (answer.message) {
+                        this.getErrorMessage().setHtml(answer.message);
+                        this.getErrorMessage().show();
+                    } else {
+                        this.getErrorMessage().hide();
+                    }
 
-
-        this.showView('auth.ViewPinCode');
-
-        // Ext.Ajax.request({
-        //     url    : service("auth/login"),
-        //     params : {
-        //         name    : this.getFieldName().getValue(),
-        //         password: this.getFieldPassword().getValue(),
-        //     },
-        //     scope  : this,
-        //     success: function (response, opts) {
-        //         this.getFieldPassword().setValue('');
-        //         var answer = JSON.parse(response.responseText);
-        //         if (answer.success) {
-        //             localStorage.setItem('__last_username__', this.getFieldName().getValue());
-        //             this.showView('auth.ViewPinCode');
-        //         } else {
-        //             if (answer.message) {
-        //                 this.getErrorMessage().setHtml(answer.message);
-        //                 this.getErrorMessage().show();
-        //             } else {
-        //                 this.getErrorMessage().hide();
-        //             }
-        //
-        //             this.updateLoginButton();
-        //         }
-        //     },
-        //     failure: function (response, opts) {
-        //         this.updateLoginButton();
-        //         this.getFieldPassword().setValue('');
-        //         this.getErrorMessage().show();
-        //     },
-        // });
-    },
+                    this.updateLoginButton();
+                }
+            },
+            failure: function (response, opts) {
+                this.updateLoginButton();
+                this.getFieldPassword().setValue('');
+            },
+        });
+    }
 });
